@@ -1,0 +1,73 @@
+// labaNuber_3.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+using namespace std;
+
+
+
+void Basic()
+{
+	char c[255];
+	for (size_t i = 0; i < 10; i++)
+	{	
+		c[i] = rand() % 255;
+		for (size_t temp = 97; temp < 127; temp++)
+			if (c[i] == temp)
+				c[i] = 32;
+		
+		cout << c[i] << " ";
+	}
+
+}
+
+void MiddleLevel()
+{
+	char c[6] = { ':' , 'd' ,'*' , '!' , '5' , '!'};
+	for (size_t i = 0; i < sizeof(c); i++)
+	{
+		if (c[i] == ':' || c[i] == '!')
+			c[i] = '.';
+	}
+	for (size_t i = 0; i < sizeof(c); i++)
+		cout << c[i] << " ";
+	
+
+}
+
+void Hard()
+{
+	cout << endl << "Введите масив символов из 11 елементов: ";
+	char c[11];
+	char tempChar[1];
+	int n = 0 , product = 1;
+	for (size_t i = 0; i < sizeof(c); i++)
+		cin >> c[i];
+	for (size_t i = 0; i < sizeof(c); i++)
+	{
+		if (isdigit(c[i]))
+		{
+			tempChar[0] = c[i];
+			n = atoi(tempChar);
+			product = n * product;
+		}
+		cout << c[i] << " ";
+	}
+	cout << " Произвидение чисел: " << product;
+	
+}
+
+int main()
+{
+	srand(time(NULL));
+	setlocale(0, "ru");
+	cout << "Базовый уровень: ";
+	Basic();
+	cout << endl << "Средний уровень: ";
+	MiddleLevel();
+	cout << endl << "Сложный уровень: ";
+	Hard();
+
+}
+
+
